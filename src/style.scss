@@ -1,0 +1,112 @@
+h1 {
+  color: #444;
+}
+
+h2 {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  color: #0242a1;
+
+  &::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    margin-left: 20px;
+    background: #0242a1;
+  }
+}
+
+ul,
+ol {
+  padding-left: 25px;
+  line-height: 1.5;
+}
+
+.main {
+  width: 1080px;
+  margin: 0 auto;
+  display: flow-root;
+  position: relative;
+  font-size: 18px;
+  letter-spacing: 1px;
+  background: #fff;
+  color: #555;
+
+  .basis {
+    .summary {
+      display: flow-root;
+      .item {
+        float: left;
+        padding: 0 10px;
+
+        &:first-child {
+          padding-left: 0;
+        }
+        &:nth-child(n + 2) {
+          border-left: 1px solid #bbb;
+        }
+      }
+    }
+
+    .contact {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 3px;
+      }
+      .phone {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .pb10 {
+    padding-bottom: 10px;
+  }
+
+  .company-list {
+    width: 100%;
+    border-collapse: collapse;
+
+    .company {
+      &:nth-child(n + 2) {
+        margin-top: 30px;
+      }
+
+      .company-item {
+        display: flex;
+        & .name {
+          width: 30%;
+          font-weight: bold;
+        }
+        & .title {
+          flex: 1;
+          font-weight: bold;
+        }
+        & .date {
+          font-family: "Courier New", Courier, monospace;
+          font-weight: bold;
+          color: #0242a1;
+        }
+      }
+
+      .duty-list {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .project-list {
+    margin-top: 10px;
+    // list-style: none;
+    margin-bottom: 25px;
+  }
+
+  .project-list .project:nth-child(n + 2) {
+    margin-top: 10px;
+  }
+}
