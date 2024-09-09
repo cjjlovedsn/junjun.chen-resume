@@ -79,9 +79,9 @@ const { companyList } = useCompany();
 
     <section class="education-background">
       <h2>教育背景</h2>
-      <div><span class="label">毕业学校：</span>北京科技职业学院</div>
+      <div><span class="label">毕业学校：</span>湖南工程职业技术学院</div>
       <div><span class="label">学历：</span>大专</div>
-      <div><span class="label">专业：</span>生物技术及应用专业</div>
+      <div><span class="label">专业：</span>计算机应用技术</div>
     </section>
   </div>
 </template>
