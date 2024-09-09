@@ -60,8 +60,8 @@ const { companyList } = useCompany();
       <div class="company" v-for="company in companyList">
         <div v-if="company.newPageForProject" style="page-break-after: always"></div>
 
-        <h3 class="name">{{ company.name }}</h3>
-        <div class="project-list">
+        <h3 v-if="company.projects.length > 0" class="name">{{ company.name }}</h3>
+        <div v-if="company.projects.length > 0" class="project-list">
           <div class="project" v-for="project in company.projects">
             <h4 class="name" style="margin-top: 6px">{{ project.name }}</h4>
             <div class="content">
