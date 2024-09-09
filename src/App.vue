@@ -4,7 +4,7 @@ import useSkill from "./hooks/useSkill";
 import useCompany from "./hooks/useCompany";
 import IconPhone from "./assets/icon/phone.vue";
 import IconEmail from "./assets/icon/email.vue";
-import IconGithub from "./assets/icon/github.vue";
+// import IconGithub from "./assets/icon/github.vue";
 
 const { personInfo } = usePersonInfo();
 const { skill } = useSkill();
@@ -25,8 +25,8 @@ const { companyList } = useCompany();
         <span class="phone">{{ personInfo.phone }}</span>
         <IconEmail class="icon" />
         <a :href="`mailto:${personInfo.email}`">{{ personInfo.email }}</a>
-        <IconGithub class="icon" />
-        <a href="https://github.com/imaxue">imaxue</a>
+        <!-- <IconGithub class="icon" /> -->
+        <!-- <a href="https://github.com/imaxue">imaxue</a> -->
       </div>
     </div>
 
