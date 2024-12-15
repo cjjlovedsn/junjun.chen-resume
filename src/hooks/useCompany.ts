@@ -20,7 +20,7 @@ const useCompany = () => {
       name: "北京至二科技有限公司",
       workStartTime: "2022/05",
       workEndTime: "至今",
-      title: "前端开发工程师",
+      title: "高级前端工程师",
       duty: [
         "协同后端工程师，对接项目的后端接口，同时发现问题并提出好的解决办法。",
         "优化用户界面，提升用户体验和操作便捷性，提高用户满意度。",
@@ -177,7 +177,7 @@ const useCompany = () => {
       ],
     },
     {
-      name: "广州山立（外包）",
+      name: "广州山立",
       workStartTime: "2010/07",
       workEndTime: "2016/12",
       title: "前端工程师",
