@@ -17,6 +17,29 @@ const useCompany = () => {
     //   ],
     // },
     {
+      name: "北京核桃桃科技有限公司",
+      workStartTime: "2025/05",
+      workEndTime: "至今",
+      title: "前端工程师",
+      duty: [
+        "负责公司产品的前端开发工作。",
+        "部分后端开发工作。",
+        "前端包括小程序、H5、PC端、安卓。桌面应用(electron)。",
+      ],
+      projects: [
+        {
+          name: "面试通",
+          description: "面试通是一款专注于面试的APP，提供面试题库、面试模拟、面试辅导等功能。",
+          technologyList: [
+            "使用Vue2 + Element-UI框架开发项目。",
+            "使用uniapp开发小程序、安卓、h5。",
+            "后端服务使用java和python。",
+            "使用electron开发桌面应用。",
+          ],
+        },
+      ],
+    },
+    {
       name: "北京至二科技有限公司",
       workStartTime: "2022/05",
       workEndTime: "至今",
@@ -27,7 +50,6 @@ const useCompany = () => {
         "针对移动端设备进行适配和优化，确保在不同分辨率和屏幕尺寸下的良好展示效果。",
         "通过分析和重构前端代码，减少页面加载时间，提高网站性能。",
         "解决前端兼容性问题，确保在不同浏览器和设备上的一致性。",
-        "目前主要是保证能兼容chrome、safari、firefox，项目的初衷是为了解决视频创作团队的协作，而且目标用户使用safari比较多。同时有许多操作需要兼容触控板"
       ],
       projects: [
         {

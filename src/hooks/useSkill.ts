@@ -10,7 +10,6 @@ const useSkill = () => {
     `熟悉 Node.js 及相关框架 Express，Egg.js；`,
     `熟悉 Flutter跨平台开发；`,
     `熟悉 Git 版本控制工具`,
-    `了解 Golang 等后端技术。`,
   ]);
   return { skill };
 };
