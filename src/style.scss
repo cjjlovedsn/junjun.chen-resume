@@ -1,181 +1,497 @@
-$company-gap: 24px;
-$section-gap: 30px;
-$theme-color: #5dd5c8;
+$company-gap: 22px;
+$section-gap: 36px;
+$ink: #1c2826;
+$muted: #5d6c69;
+$line: #d5e0dc;
+$accent: #0f766e;
+$accent-soft: #e7f4f2;
+$paper: #e7eeeb;
 
-h1 {
-  color: #fff;
-  margin: 30px 0 10px;
-  line-height: 1;
-}
-
-a {
-  color: #5dd5c8;
-}
-
-a:hover {
-  color: hsl(174, 59%, 70%);
-}
-
+h1,
 h2,
 h3,
-h4 {
+h4,
+p {
   margin: 0;
 }
 
 ul,
 ol {
   margin: 0;
-  padding-left: 22px;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 body {
-  background-color: #232627;
+  background: $paper;
+  color: $ink;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 
-.main {
-  width: 1080px;
-  margin: 0 auto;
-  padding: 0 40px;
-  font-size: 18px;
+@page {
+  size: A4;
+  margin: 8mm 10mm;
+}
+
+.page {
+  padding: 36px 20px 56px;
+}
+
+.toolbar {
+  width: min(920px, 100%);
+  margin: 0 auto 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.export-pdf {
+  border: 0;
+  background: $accent;
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 1px;
-  color: rgba(#fff, 0.9);
-  line-height: 1.5;
-  padding-bottom: 40px;
+  padding: 10px 18px;
+  cursor: pointer;
 
-  .basis {
-    .summary {
-      .item {
-        padding: 0 10px;
-        font-weight: 500;
+  &:hover {
+    background: #0c615b;
+  }
+}
 
-        &:first-child {
-          padding-left: 0;
-        }
+.sheet {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 16px 48px rgba(22, 46, 42, 0.08);
+  border-top: 6px solid $accent;
+}
 
-        &:nth-child(n + 2) {
-          border-left: 1px solid #bbb;
-        }
-      }
-    }
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 28px;
+  padding: 40px 48px 28px;
+  border-bottom: 1px solid $line;
 
-    .contact {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
+  .identity {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+  }
 
-      .icon {
-        width: 18px;
-        height: 18px;
-        margin-right: 4px;
+  .seal {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    background: $accent;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+  }
 
-        &:nth-child(n + 2) {
-          margin-left: 16px;
-        }
+  .role {
+    color: $accent;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  h1 {
+    margin-top: 4px;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    line-height: 1.15;
+  }
+
+  .summary {
+    margin-top: 10px;
+    color: $muted;
+    font-size: 14px;
+
+    .item {
+      &:nth-child(n + 2)::before {
+        content: "·";
+        margin: 0 8px;
+        color: #9aaba7;
       }
     }
   }
 
-  section {
-    margin-top: $section-gap;
-    h2 {
-      display: flex;
-      white-space: nowrap;
-      align-items: center;
-      color: $theme-color;
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
 
-      &::after {
+  .contact-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: $ink;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    color: $accent;
+  }
+}
+
+.sheet > section {
+  padding: 0 48px;
+  margin-top: $section-gap;
+
+  &:last-child {
+    padding-bottom: 48px;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: $accent;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+
+    &::before {
+      content: "";
+      flex: none;
+      width: 8px;
+      height: 8px;
+      background: $accent;
+    }
+
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: $line;
+    }
+  }
+}
+
+.skill ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  li {
+    list-style: none;
+    padding: 6px 12px;
+    background: $accent-soft;
+    color: #0c5f58;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+  }
+}
+
+.work-experience {
+  .company {
+    position: relative;
+    padding: 2px 0 18px 20px;
+    border-left: 2px solid $line;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 7px;
+      box-sizing: border-box;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid $accent;
+    }
+
+    &:nth-child(n + 2) {
+      margin-top: 8px;
+    }
+  }
+
+  .company-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 12px 20px;
+    align-items: baseline;
+  }
+
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .title {
+    color: $accent;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .date {
+    color: $muted;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+
+  .duty-list {
+    margin-top: 8px;
+
+    li {
+      position: relative;
+      padding-left: 14px;
+      color: #31403d;
+      font-size: 14.5px;
+      line-height: 1.7;
+      list-style: none;
+
+      &::before {
         content: "";
-        height: 2px;
-        width: 100%;
-        margin-left: 20px;
-        background: $theme-color;
+        position: absolute;
+        left: 0;
+        top: 0.72em;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #8fbfb8;
       }
     }
+  }
+}
 
-    h3 {
-      font-size: 22px;
+.project-experience {
+  .company {
+    &:nth-child(n + 2) {
+      margin-top: $company-gap;
     }
+  }
+
+  h3.name {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed $line;
+    font-size: 16px;
+  }
+
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .project {
+    padding: 16px 18px 14px;
+    background: #f6faf9;
+    border-left: 3px solid $accent;
 
     h4 {
-      font-size: 20px;
+      font-size: 16px;
+      font-weight: 700;
     }
   }
 
-  .skill {
-    ul {
-      margin-top: 0;
-    }
+  .content {
+    margin-top: 10px;
   }
 
-  .work-experience {
-    .company-list {
-      .company {
-        &:nth-child(n + 2) {
-          margin-top: $company-gap;
-        }
-
-        .company-overview {
-          display: flex;
-          align-items: center;
-          .name {
-            margin: 0;
-            width: 40%;
-          }
-          .title {
-            flex: 1;
-            font-weight: bold;
-          }
-          .date {
-            font-family: "Courier New", Courier, monospace;
-            font-weight: bold;
-            color: $theme-color;
-          }
-        }
-
-      }
-    }
+  .block + .block {
+    margin-top: 10px;
   }
 
-  .project-experience {
-    .company {
-      &:nth-child(n + 3) {
-        margin-top: $company-gap;
-      }
-
-      .name {
-        margin: 0;
-      }
-
-      .project-list {
-        padding-left: 20px;
-
-        .project {
-          &:nth-child(n + 2) {
-            margin-top: 20px;
-          }
-
-          .content {
-            padding-left: 20px;
-            .title {
-              font-weight: bold;
-            }
-
-            .description {
-              margin: 0;
-            }
-
-            .merit-list {
-              margin: 0;
-            }
-          }
-        }
-      }
-    }
+  .title {
+    display: inline-block;
+    margin-bottom: 4px;
+    color: $accent;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 
-  .education-background {
+  .description {
+    color: #31403d;
+    font-size: 14.5px;
+    line-height: 1.75;
+  }
+
+  .merit-list li {
+    position: relative;
+    padding-left: 14px;
+    color: #31403d;
+    font-size: 14.5px;
+    line-height: 1.75;
+    list-style: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: $accent;
+    }
+  }
+}
+
+.education-background {
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr 0.8fr;
+    gap: 12px;
+
+    > div {
+      padding: 14px 16px;
+      background: $accent-soft;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
     .label {
-      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+      color: $muted;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
+  }
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 0 0 32px;
+  }
+
+  .toolbar {
+    margin-bottom: 12px;
+    padding: 12px 20px 0;
+  }
+
+  .sheet {
+    box-shadow: none;
+  }
+
+  .hero,
+  .sheet > section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 28px;
+
+    h1 {
+      font-size: 32px;
+      letter-spacing: 4px;
+    }
+  }
+
+  .work-experience .company-overview,
+  .education-background .edu-grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .page {
+    padding: 0;
+  }
+
+  .toolbar {
+    display: none;
+  }
+
+  .sheet {
+    width: auto;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .hero {
+    padding: 4mm 12mm 16px;
+  }
+
+  .sheet > section {
+    padding: 0 12mm;
+    margin-top: 20px;
+    overflow: visible;
+
+    &:last-child {
+      padding-bottom: 6mm;
+    }
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  h2,
+  h3,
+  h4,
+  .project .title {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .skill li,
+  .duty-list li,
+  .merit-list li,
+  .project .description,
+  .work-experience .company,
+  .education-background .edu-grid > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .project,
+  .work-experience .company {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 }

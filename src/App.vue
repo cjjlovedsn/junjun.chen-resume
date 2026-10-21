@@ -9,81 +9,114 @@ import IconEmail from "./assets/icon/email.vue";
 const { personInfo } = usePersonInfo();
 const { skill } = useSkill();
 const { companyList } = useCompany();
+
+const formatSkill = (text: string) => text.replace(/[；;。.\s]+$/u, "");
+
+const exportPdf = () => {
+  window.print();
+};
 </script>
 
 <template>
-  <div class="main">
-    <div class="basis">
-      <h1>{{ personInfo.name }}</h1>
-      <div class="summary">
-        <span class="item">{{ personInfo.gender }}</span>
-        <span class="item">{{ personInfo.age }}岁</span>
-        <span class="item">{{ personInfo.yearsOfWorking }}年工作经验</span>
-      </div>
-      <div class="contact">
-        <IconPhone class="icon" />
-        <span class="phone">{{ personInfo.phone }}</span>
-        <IconEmail class="icon" />
-        <a :href="`mailto:${personInfo.email}`">{{ personInfo.email }}</a>
-        <!-- <IconGithub class="icon" /> -->
-        <!-- <a href="https://github.com/imaxue">imaxue</a> -->
-      </div>
+  <div class="page">
+    <div class="toolbar">
+      <button class="export-pdf" type="button" @click="exportPdf">导出 PDF</button>
     </div>
-
-    <section class="skill">
-      <h2>专业技能</h2>
-      <ul>
-        <li v-for="(item, index) in skill" :key="index">{{ item }}</li>
-      </ul>
-    </section>
-
-    <section class="work-experience">
-      <h2>工作经历</h2>
-      <div class="company-list">
-        <div class="company" v-for="company in companyList">
-          <!-- <div v-if="company.newPageForDuty" style="page-break-after: always"></div> -->
-
-          <div class="company-overview">
-            <h3 class="name">{{ company.name }}</h3>
-            <div class="title">{{ company.title }}</div>
-            <div class="date">{{ company.workStartTime }}-{{ company.workEndTime }}</div>
-          </div>
-          <ul class="duty-list">
-            <li v-for="duty in company.duty">{{ duty }}</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="project-experience">
-      <h2>项目经验</h2>
-      <div class="company" v-for="company in companyList">
-        <div v-if="company.newPageForProject" style="page-break-after: always"></div>
-
-        <h3 v-if="company.projects.length > 0" class="name">{{ company.name }}</h3>
-        <div v-if="company.projects.length > 0" class="project-list">
-          <div class="project" v-for="project in company.projects">
-            <h4 class="name" style="margin-top: 6px">{{ project.name }}</h4>
-            <div class="content">
-              <div class="title" style="margin-top: 6px">业务功能：</div>
-              <p class="description">{{ project.description }}</p>
-              <div class="title" style="margin-top: 6px">工作内容：</div>
-              <ul class="merit-list">
-                <li v-for="technology in project.technologyList">{{ technology }}</li>
-              </ul>
+    <div class="sheet">
+      <header class="hero">
+        <div class="identity">
+          <div class="seal" aria-hidden="true">陈</div>
+          <div>
+            <p class="role">Web 前端工程师</p>
+            <h1>{{ personInfo.name }}</h1>
+            <div class="summary">
+              <span class="item">{{ personInfo.gender }}</span>
+              <span class="item">{{ personInfo.age }}岁</span>
+              <span class="item">{{ personInfo.yearsOfWorking }}年工作经验</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        <div class="contact">
+          <a class="contact-item" :href="`tel:${personInfo.phone.replace(/-/g, '')}`">
+            <IconPhone class="icon" />
+            <span>{{ personInfo.phone }}</span>
+          </a>
+          <a class="contact-item" :href="`mailto:${personInfo.email}`">
+            <IconEmail class="icon" />
+            <span>{{ personInfo.email }}</span>
+          </a>
+          <!-- <IconGithub class="icon" /> -->
+          <!-- <a href="https://github.com/imaxue">imaxue</a> -->
+        </div>
+      </header>
 
-    <section class="education-background">
-      <h2>教育背景</h2>
-      <div><span class="label">毕业学校：</span>中南林业科技大学</div>
-      <div><span class="label">学历：</span>本科</div>
-      <div><span class="label">专业：</span>软件工程</div>
-    </section>
+      <section class="skill">
+        <h2>专业技能</h2>
+        <ul>
+          <li v-for="(item, index) in skill" :key="index">{{ formatSkill(item) }}</li>
+        </ul>
+      </section>
+
+      <section class="work-experience">
+        <h2>工作经历</h2>
+        <div class="company-list">
+          <div
+            class="company"
+            v-for="company in companyList"
+            :key="`${company.name}-${company.workStartTime}`"
+          >
+            <div class="company-overview">
+              <h3 class="name">{{ company.name }}</h3>
+              <div class="title">{{ company.title }}</div>
+              <div class="date">{{ company.workStartTime }} — {{ company.workEndTime }}</div>
+            </div>
+            <ul class="duty-list">
+              <li v-for="(duty, index) in company.duty" :key="index">{{ duty }}</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-experience">
+        <h2>项目经验</h2>
+        <div
+          class="company"
+          v-for="company in companyList"
+          :key="`${company.name}-${company.workStartTime}`"
+        >
+          <template v-if="company.projects.length > 0">
+            <h3 class="name">{{ company.name }}</h3>
+            <div class="project-list">
+              <article class="project" v-for="project in company.projects" :key="project.name">
+                <h4 class="name">{{ project.name }}</h4>
+                <div class="content">
+                  <div class="block">
+                    <div class="title">业务功能</div>
+                    <p class="description">{{ project.description }}</p>
+                  </div>
+                  <div class="block">
+                    <div class="title">工作内容</div>
+                    <ul class="merit-list">
+                      <li v-for="(technology, index) in project.technologyList" :key="index">
+                        {{ technology }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </template>
+        </div>
+      </section>
+
+      <section class="education-background">
+        <h2>教育背景</h2>
+        <div class="edu-grid">
+          <div><span class="label">毕业学校</span>中南林业科技大学</div>
+          <div><span class="label">学历</span>本科</div>
+          <div><span class="label">专业</span>软件工程</div>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
-
-<style scoped lang="scss"></style>

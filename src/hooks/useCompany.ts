@@ -24,6 +24,7 @@ const useCompany = () => {
       duty: [
         "负责公司产品的前端开发工作。",
         "部分后端开发工作。",
+        "负责产品调研、需求文档编写、需求分析、开发、测试",
         "前端包括小程序、H5、PC端、安卓。桌面应用(electron)。",
       ],
       projects: [
@@ -175,7 +176,6 @@ const useCompany = () => {
       workStartTime: "2017/01",
       workEndTime: "2020/08",
       title: "前端负责人",
-      newPageForProject: true,
       duty: [
         "设定团队目标，分配工作任务，协调资源，监控进度，确保项目按时交付。",
         "根据项目需求和业务目标，制定前端技术栈和架构方案。",

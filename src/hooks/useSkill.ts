@@ -2,14 +2,16 @@ import { ref } from "vue";
 
 const useSkill = () => {
   const skill = ref([
-    `熟悉 HTML，CSS，JavaScript，ES6+，TypeScript，Less，Sass；`,
-    `熟悉 Vue2/3，Vuex，Pinia，Nuxt，Vue Router，Element-UI，Naive-UI；`,
-    `熟悉 Webpack，Vite 前端工程自动化工具；`,
-    `熟悉 微信公众号，微信小程序开发；`,
-    `熟悉 Electron 桌面应用开发`,
-    `熟悉 Node.js 及相关框架 Express，Egg.js；`,
-    `熟悉 Flutter跨平台开发；`,
-    `熟悉 Git 版本控制工具`,
+    "HTML、CSS、JavaScript、TypeScript，Sass / Less",
+    "Vue 2/3、Vue Router、Pinia、Vuex、Nuxt",
+    "Element UI、Element Plus、Naive UI",
+    "Tailwind CSS、shadcn-vue（Reka UI）",
+    "uni-app：微信小程序、H5、App，以及微信分享与支付",
+    "Electron、Node.js 桌面应用，支持 Windows / macOS",
+    "Flutter 跨平台开发，支持 Android / iOS",
+    "WebSocket、虚拟列表、大文件上传、Canvas 画板",
+    "Chrome / Safari 浏览器插件",
+    "Java、Python 部分后端开发与接口联调",
   ]);
   return { skill };
 };
